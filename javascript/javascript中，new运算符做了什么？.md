@@ -52,8 +52,8 @@
     var potatoCar = new car("Fiat", "500c", 2010);
     var pandaCar = new car("Geely", "yuanjing x1", 2017);
 
-    alert(potatoCar.make);         // "Nissan"
-    alert(pandaCar.make);          // "Eagle"
+    alert(potatoCar.make);         // "Fiat"
+    alert(pandaCar.make);          // "Geely"
 
 如果想同时给这两个实例添加同一属性：
 
