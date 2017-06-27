@@ -29,7 +29,7 @@
     
     var apple = new Fruits(3.5);
 
-用代码来实现new的执行步骤：
+用代码来实现上述代码中 var apple = new Fruits(3.5) 中new的执行步骤：
 
     var obj = {};                                          // 创建新对象
 
@@ -37,7 +37,7 @@
     
     var res = Fruits.call(obj, 3.5);                       // 执行构造函数foo，同时this会指向这个新的实例
     
-    return typeof res === 'object' ? res : obj;            // 如果构造函数返回了一个对象，那么这个对象会取代new出来的对象，反之，会返回步骤1中创建的对象
+    apple = typeof res === 'object' ? res : obj;            // 如果构造函数返回了一个对象，那么这个对象会取代new出来的对象，反之，会返回步骤1中创建的对象
 
 > 明白了new的原理，现在来看看代码里面要怎么去使用：
 
@@ -49,8 +49,8 @@
 
 在创建2个实例：
 
-    var potatoCar = new car("Nissan", "300ZX", 2008);
-    var pandaCar = new car("Eagle", "Talon TSi", 2006);
+    var potatoCar = new car("Fiat", "500c", 2010);
+    var pandaCar = new car("Geely", "yuanjing x1", 2017);
 
     alert(potatoCar.make);         // "Nissan"
     alert(pandaCar.make);          // "Eagle"
