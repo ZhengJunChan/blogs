@@ -18,7 +18,9 @@
 2. （如果有参数，传参并）执行构造函数foo，同时this会指向这个新的实例。如果没有参数new foo等同new foo()
 3. 如果构造函数返回了一个对象，那么这个对象会取代new出来的对象，反之，会返回步骤1中创建的对象
 
-> 举个栗子：
+> 举个栗子 (栗子1 跟 栗子2 毫无关系) ：
+
+栗子1，当构造函数中没有return时：
 
     function Fruits(price) {
 		this.price = price;
@@ -28,8 +30,46 @@
     Fruits.prototype.type = 'Fruits';
     
     var apple = new Fruits(3.5);
+    
+    console.log(apple);
 
-用代码来实现上述代码中 new Fruits(3.5) 中new的执行步骤：
+    // Fruits {
+    // 	price: 3.5,
+    // 	__proto__: {
+    // 		type: "Fruits",
+    // 		constructor: function Fruits(price),
+    // 		__proto__: Object
+    // 	}
+    // }
+
+栗子2，当构造函数中有return时：
+
+    function Fruits(price) {
+	    this.price = price;
+
+        // 比栗子1中多了return
+	    return {
+		    name: 'apple'
+	    };
+    }
+  
+    Fruits.expiryDate = '2018-03-21';
+    Fruits.prototype.type = 'Fruits';
+    
+    var apple = new Fruits(3.5);
+
+    console.log(apple);
+	
+	// 构造函数中有return， 返回return的对象
+    // Object {
+    // 	   name: 'apple',
+    //     __proto__: {
+    // 	  	   constructor: function Object(),
+    // 		   ......
+    // 	   }
+    // }
+
+通过栗子1、2，现在用代码来实现上述代码中 new Fruits(3.5) 中new的执行步骤：
 
     var obj = {};                                          // 创建新对象
 
