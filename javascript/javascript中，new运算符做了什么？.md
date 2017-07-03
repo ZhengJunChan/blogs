@@ -1,6 +1,6 @@
 ## javascript中，new运算符做了什么？
 
-首先，我们来看一下它们的语法和概述：
+首先，我们来看一下它的语法和概述：
 > [new](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/new "new")
 
 **语法**：new constructor[([arguments])]
