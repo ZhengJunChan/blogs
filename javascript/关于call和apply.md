@@ -49,12 +49,12 @@ call和apply这两个方法的极为相似，唯一的区别在于传参不同
 
     function Fruit(name, price, unit) {
         this.unit = unit;
-        Food.apply(this, [name, price]);                    // 相当于Food.call(this, name, type)
+        Food.apply(this, [name, price]);                      // 相当于Food.call(this, name, type)
     }
 
     let apple = new Fruit("apple", "3块", "个");
 
-    console.log(apple.name + apple.price + 1 + apple.unit);  // apple3块1个
+    console.log(apple.name + apple.price + 1 + apple.unit);   // apple3块1个
 
 > 再举个栗子，瞅瞅它们更多的使用场景 —— 多重继承：
 
@@ -75,5 +75,20 @@ call和apply这两个方法的极为相似，唯一的区别在于传参不同
     let mango = new TropicalFruit('mango', '8块', false);
 
     console.log(mango);                                        // {name: "mango", price: "8块", isPeel: false}
+
+**注意：在使用call和apply实现继承时，不会继承构造函数的prototype中的属性**
+
+> 举个栗子
+    
+    function Fruit(isPeel) {
+        this.isPeel = isPeel;
+    }
+
+    Fruit.prototype.type = "mango";
+
+    let mango = {};
+    Fruit.apply(mango);          // 不会继承Fruit.prototype中的属性
+
+    console.log(mango.type);     // undefined
 
 **总结：关于call跟apply，唯一的区别就是传参方式不同。call和apply的作用是将调用该方法的函数上下文指向传入的对象（如果该对象在当前作用域存在）**
