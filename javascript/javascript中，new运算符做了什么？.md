@@ -73,7 +73,7 @@
 
     var obj = {};                                          // 创建新对象
 
-    obj._proto_ = Fruits.prototype;                        // 将这个对象的_proto_指向Fruits的prototype
+    obj.__proto__ = Fruits.prototype;                        // 将这个对象的_proto_指向Fruits的prototype
     
     var res = Fruits.call(obj, 3.5);                       // 执行构造函数foo，同时this会指向这个新的实例
     
